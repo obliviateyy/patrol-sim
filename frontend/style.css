@@ -1,0 +1,101 @@
+:root {
+  --bg: #f5f7fa;
+  --panel: #ffffff;
+  --ink: #1f2933;
+  --muted: #6b7785;
+  --line: #d9e0e8;
+  --accent: #2563a6;
+  --accent-soft: #e8f1fb;
+  --danger: #b42318;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+header { margin-bottom: 20px; }
+header h1 { margin: 0 0 6px; font-size: 24px; }
+header p { margin: 0; color: var(--muted); }
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.panel h2 { margin: 0 0 12px; font-size: 16px; }
+
+.map-panel { flex: 1 1 660px; }
+.side-panel { flex: 0 1 300px; display: grid; gap: 24px; }
+
+.legend {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.swatch { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.swatch.free { background: #ffffff; border: 1px solid var(--line); }
+.swatch.obstacle { background: #8c9bab; }
+.swatch.robot { background: #d24b3e; border-radius: 50%; }
+
+.canvas-wrap { overflow-x: auto; }
+canvas {
+  display: block;
+  background: #fbfcfd;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.controls { display: flex; gap: 8px; margin-bottom: 10px; }
+
+button {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) { background: var(--accent-soft); }
+button:disabled { opacity: .55; cursor: wait; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.primary:hover:not(:disabled) { background: #1d5287; }
+button.secondary { width: 100%; }
+
+.message { min-height: 20px; margin: 10px 0 0; font-size: 13px; color: var(--muted); }
+.message.blocked { color: var(--danger); }
+
+.status-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.status-table th, .status-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.status-table th { color: var(--muted); font-weight: 500; }
+.status-table td { font-variant-numeric: tabular-nums; }
+
+.hint { margin: 10px 0 0; font-size: 12px; color: var(--muted); }
+
+footer { margin-top: 20px; font-size: 12px; color: var(--muted); }
+code { background: var(--accent-soft); padding: 1px 4px; border-radius: 3px; }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能巡检机器人二维仿真系统</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>智能巡检机器人二维仿真系统</h1>
+    <p>查看二维地图，手动控制机器人，观察状态变化。</p>
+  </header>
+
+  <main>
+    <section class="panel map-panel">
+      <h2>二维地图</h2>
+      <div class="legend">
+        <span><i class="swatch free"></i>可通行</span>
+        <span><i class="swatch obstacle"></i>障碍物</span>
+        <span><i class="swatch robot"></i>机器人</span>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="mapCanvas" width="640" height="480" aria-label="巡检二维地图"></canvas>
+      </div>
+    </section>
+
+    <aside class="panel side-panel">
+      <section>
+        <h2>手动控制</h2>
+        <div class="controls">
+          <button id="turnLeftBtn" type="button">↺ 左转</button>
+          <button id="forwardBtn" type="button" class="primary">↑ 前进</button>
+          <button id="turnRightBtn" type="button">↻ 右转</button>
+        </div>
+        <button id="resetBtn" type="button" class="secondary">重置到起点</button>
+        <p id="message" class="message" role="status"></p>
+      </section>
+
+      <section>
+        <h2>机器人状态</h2>
+        <table class="status-table">
+          <tbody>
+            <tr><th>横坐标 x</th><td id="stateX">—</td></tr>
+            <tr><th>纵坐标 y</th><td id="stateY">—</td></tr>
+            <tr><th>朝向</th><td id="stateDirection">—</td></tr>
+            <tr><th>运行状态</th><td id="stateStatus">—</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">状态由后端 API 返回，每 2 秒自动同步一次。</p>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <span>数据来源：<code>GET /api/map</code>、<code>GET /api/robot</code></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
