@@ -1,0 +1,2 @@
+# 统一换行符为 LF，保证 Windows 本地、Linux(Docker/CI/Render) 构建环境一致
+* text=auto eol=lf
